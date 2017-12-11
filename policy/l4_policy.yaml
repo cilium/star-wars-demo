@@ -1,0 +1,14 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+description: "Allow spaceships to land on the deathstar"
+metadata:
+  name: "deathstar-landing"
+spec:
+  endpointSelector:
+    matchLabels:
+      class: deathstar
+      org: empire
+  ingress:
+  - fromEndpoints:
+    - matchLabels:
+        class: spaceship

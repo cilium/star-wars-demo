@@ -1,0 +1,19 @@
+apiVersion: "cilium.io/v2"
+kind: CiliumNetworkPolicy
+description: "Deathstar Layer 7 policies"
+metadata:
+  name: "deathstar-l7"
+spec:
+  endpointSelector:
+    matchLabels:
+      class: deathstar
+      org: empire
+  ingress:
+  - toPorts:
+    - ports:
+      - port: "80"
+        protocol: TCP
+      rules:
+        http:
+        - method: "POST"
+          path: "/v1/request-landing$"
