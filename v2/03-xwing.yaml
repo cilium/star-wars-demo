@@ -1,0 +1,15 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: xwing
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        org: alliance
+        class: spaceship
+    spec:
+      containers:
+      - name: spaceship
+        image: tgraf/netperf
