@@ -7,6 +7,7 @@ Amazing Star Wars themed demo including HTTP policy enforcement
 
 - minikube >= 0.22.3
 - bash
+- kubectl
 
 ## Versions
 
