@@ -1,8 +1,8 @@
 apiVersion: "cilium.io/v2"
 kind: CiliumNetworkPolicy
-description: "Deathstar Layer 7 policies"
+description: "Protect deathstar APIs"
 metadata:
-  name: "deathstar-l7"
+  name: "deathstar-api-protection"
 spec:
   endpointSelector:
     matchLabels:
@@ -12,7 +12,7 @@ spec:
   - fromEndpoints:
     - matchLabels:
         class: spaceship
-  - toPorts:
+    toPorts:
     - ports:
       - port: "80"
         protocol: TCP
