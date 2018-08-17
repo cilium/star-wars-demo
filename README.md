@@ -12,8 +12,8 @@ Amazing Star Wars themed demo including HTTP policy enforcement
 ## Overview
 
                                      +-----------------------------------------+
-     +---------------------+         | Deathstar 💀 💀 💀 📡 📡 📡 🙈 🙈       |
-     | Spaceship 🚀 🚀 🚀  |-------->|    GET /v1/                             |
+     +---------------------+         | Deathstar 💀 💀 💀 📡 📡 📡 🙈 🙈     |
+     | Spaceship 🚀 🚀 🚀  |-------->|    GET /v1/                            |
      +---------------------+    +--->|   POST /v1/request-landing              |
                                 |    |    PUT /v1/cargobay                     |
      +---------------------+    |    |    GET /v1/hyper-matter-reactor/status  |
@@ -34,7 +34,7 @@ Amazing Star Wars themed demo including HTTP policy enforcement
     $ # swagger API specification to the Empire's ultimate weapon,
     $ # the deathstar.
 
-Deploy the deathstar and some spaceships:
+### Deploy the deathstar and some spaceships
 
     kubectl create -f 01-deathstar.yaml -f 02-xwing.yaml
     service "deathstar" created
@@ -42,7 +42,7 @@ Deploy the deathstar and some spaceships:
     deployment.extensions "spaceship" created
     deployment.extensions "xwing" created
 
-Check that pods are deployed
+### Check that pods are deployed
 
     kubectl get pods
     NAME                         READY     STATUS    RESTARTS   AGE
@@ -56,6 +56,8 @@ Check that pods are deployed
     xwing-bbc56674d-2mf74        1/1       Running   0          23s
     xwing-bbc56674d-8n82f        1/1       Running   0          23s
     xwing-bbc56674d-pgjmf        1/1       Running   0          23s
+
+### Scan the deathstar with the X-Wing
 
 Pick a random X-Wing pod and generate the service URL (Feel free to do this
 manually):
@@ -87,10 +89,14 @@ Scan the deathstar with the X-Wing:
             ]
     }
 
+### Load API aware policy
+
 Load the L3-L7 policy to protect the deathstar:
 
     kubectl create -f policy/l7_policy.yaml
     ciliumnetworkpolicy.cilium.io "deathstar-api-protection" created
+
+### Attack the deathstar
 
 Try and `PUT` something into the exhaust port of the deathstar:
 
