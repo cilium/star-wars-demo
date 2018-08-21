@@ -25,7 +25,8 @@ spec:
     spec:
       containers:
       - name: deathstar
-        image: cilium/starwars
+        image: docker.io/cilium/starwars:v1.0
+        imagePullPolicy: IfNotPresent
 ---
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -41,4 +42,5 @@ spec:
     spec:
       containers:
       - name: spaceship
-        image: tgraf/netperf
+        image: docker.io/tgraf/netperf:v1.0
+        imagePullPolicy: IfNotPresent
