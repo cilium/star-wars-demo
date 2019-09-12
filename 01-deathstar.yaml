@@ -19,7 +19,7 @@ spec:
   selector:
     matchLabels:
       org: empire
-      class: spaceship
+      class: deathstar
   replicas: 3
   template:
     metadata:
