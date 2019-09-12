@@ -11,11 +11,15 @@ spec:
     org: empire
     class: deathstar
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: deathstar
 spec:
+  selector:
+    matchLabels:
+      org: empire
+      class: spaceship
   replicas: 3
   template:
     metadata:
@@ -28,11 +32,15 @@ spec:
         image: docker.io/cilium/starwars:v1.0
         imagePullPolicy: IfNotPresent
 ---
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: spaceship
 spec:
+  selector:
+    matchLabels:
+      org: empire
+      class: spaceship
   replicas: 4
   template:
     metadata:
