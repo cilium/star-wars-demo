@@ -1,8 +1,12 @@
-apiVersion: extensions/v1beta1
+apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: xwing
 spec:
+  selector:
+    matchLabels:
+      org: alliance
+      class: spaceship
   replicas: 3
   template:
     metadata:
